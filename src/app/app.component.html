@@ -1,0 +1,22 @@
+<div>
+  <div *ngFor="let user of users$ | async" (click)="createNotice(user)">
+
+    <div>
+      User: {{ user.username }}
+    </div>
+    <div *ngFor="let notice of user.notices">
+      Notice: {{ notice.content }}, Category: {{ notice.category.name }}
+    </div>
+  </div>
+</div>
+
+<button (click)="createUser()">Create user</button>
+
+<div>
+  <div *ngFor="let category of categories$ | async">
+    {{ category | json }}
+  </div>
+</div>
+
+<button (click)="createCategory()">Create category</button>
+
