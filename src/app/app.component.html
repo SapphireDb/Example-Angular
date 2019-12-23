@@ -13,7 +13,7 @@
 <button (click)="createUser()">Create user</button>
 
 <div>
-  <div *ngFor="let category of categories$ | async">
+  <div *ngFor="let category of categories$ | async" (click)="updateCategory(category)">
     {{ category | json }}
   </div>
 </div>

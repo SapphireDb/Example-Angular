@@ -21,8 +21,7 @@ import {HttpClientModule} from '@angular/common/http';
       provide: SAPPHIRE_DB_OPTIONS,
       useValue: <SapphireDbOptions>{
         serverBaseUrl: 'localhost:5001',
-        useSsl: true,
-        connectionType: 'websocket'
+        useSsl: true
       }
     }
   ],

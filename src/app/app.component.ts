@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     this.noticeCollection = this.db.collection<Notice>('notices');
     this.categoryCollection = this.db.collection<Category>('categories');
 
-    this.users$ = this.userCollection.include('notices.user').include('notices.category').values();
+    this.users$ = this.userCollection.include('notices.category').include('notices.user').values();
     this.categories$ = this.categoryCollection.values();
   }
 
@@ -52,6 +52,14 @@ export class AppComponent implements OnInit {
     const category = prompt('New category');
     this.categoryCollection.add({
       name: category
+    });
+  }
+
+  updateCategory(category: Category) {
+    const categoryName = prompt('New category');
+    this.categoryCollection.update({
+      ...category,
+      name: categoryName
     });
   }
 }
