@@ -20,8 +20,8 @@ import {HttpClientModule} from '@angular/common/http';
     {
       provide: SAPPHIRE_DB_OPTIONS,
       useValue: <SapphireDbOptions>{
-        serverBaseUrl: 'localhost:5001',
-        useSsl: true
+        serverBaseUrl: 'localhost:5000',
+        useSsl: false
       }
     }
   ],
