@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {SAPPHIRE_DB_OPTIONS, SapphireDbModule, SapphireDbOptions} from 'ng-sapphiredb';
-import {HttpClientModule} from '@angular/common/http';
+import { SAPPHIRE_DB_OPTIONS, SapphireDbModule, SapphireDbOptions } from 'ng-sapphiredb';
 
 @NgModule({
   declarations: [
@@ -12,7 +11,6 @@ import {HttpClientModule} from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     AppRoutingModule,
     SapphireDbModule
   ],

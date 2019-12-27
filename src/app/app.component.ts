@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     this.noticeCollection = this.db.collection<Notice>('notices');
     this.categoryCollection = this.db.collection<Category>('categories');
 
-    this.users$ = this.userCollection.include('notices.category').include('notices.user').values();
+    this.users$ = this.userCollection.include('notices.user').include('notices.category').values();
     this.categories$ = this.categoryCollection.values();
   }
 
