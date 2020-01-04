@@ -1,22 +1,16 @@
-<div>
-  <div *ngFor="let user of users$ | async" (click)="createNotice(user)">
+<header class="app-bar bg-red fg-white" data-role="appbar" data-expand-point="md">
+  <a routerLink="" class="d-block brand fg-white">
+    <span class="border bd-white border-radius p-2">SapphireDb Demo</span>
+  </a>
+  <ul class="app-bar-menu ml-auto">
 
-    <div>
-      User: {{ user.username }}
-    </div>
-    <div *ngFor="let notice of user.notices">
-      Notice: {{ notice.content }}, Category: {{ notice.category.name }}
+  </ul>
+</header>
+
+<div class="container-fluid" style="padding-top: 64px;">
+  <div class="row">
+    <div class="offset-md-2 cell-md-8">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
-
-<button (click)="createUser()">Create user</button>
-
-<div>
-  <div *ngFor="let category of categories$ | async" (click)="updateCategory(category)">
-    {{ category | json }}
-  </div>
-</div>
-
-<button (click)="createCategory()">Create category</button>
-
