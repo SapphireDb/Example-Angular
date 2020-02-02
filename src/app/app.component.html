@@ -1,16 +1,35 @@
-<header class="app-bar bg-red fg-white" data-role="appbar" data-expand-point="md">
-  <a routerLink="" class="d-block brand fg-white">
-    <span class="border bd-white border-radius p-2">SapphireDb Demo</span>
-  </a>
-  <ul class="app-bar-menu ml-auto">
+<h1>Example angular application using SapphireDb</h1>
 
-  </ul>
-</header>
+<h2>Basic example</h2>
 
-<div class="container-fluid" style="padding-top: 64px;">
-  <div class="row">
-    <div class="offset-md-2 cell-md-8">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
+<div *ngFor="let example of examples$ | async">
+  {{ example | json }} <button (click)="updateExample(example)">Update</button><button (click)="removeExample(example)">Remove</button>
 </div>
+
+<button (click)="addExample()">Add</button>
+
+<h2>Chat</h2>
+
+<h3>Users</h3>
+<button *ngFor="let user of users$ | async" (click)="setUser(user)">{{ user.username }}</button>
+<button (click)="createUser()">Create user</button>
+
+<ng-container *ngIf="currentUser">
+  <h3>You are: {{ currentUser.username }}</h3>
+
+  <h4>Select chat partner</h4>
+  <button *ngFor="let user of chatPartners$ | async" (click)="setChatPartner(user)">{{ user.username }}</button>
+
+  <ng-container *ngIf="chatPartner">
+    <h3>Chat between '{{ currentUser.username }}' and '{{ chatPartner.username }}'</h3>
+    <h4>Message</h4>
+    <div *ngFor="let message of messages$ | async" [style.text-align]="message.ownerId === currentUser.id ? 'right' : 'left'">
+      {{ message.content }} ({{ message.createdOn | date }})
+    </div>
+    <label>
+      New Message:
+      <input [(ngModel)]="newMessageContent" />
+    </label>
+    <button (click)="sendMessage()">Send</button>
+  </ng-container>
+</ng-container>

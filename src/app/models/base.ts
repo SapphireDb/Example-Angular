@@ -1,5 +1,5 @@
 export interface Base {
-  id?: string;
+  id?: number;
   createdOn?: string;
   updatedOn?: string;
 }

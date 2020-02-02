@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SAPPHIRE_DB_OPTIONS, SapphireDbModule, SapphireDbOptions } from 'ng-sapphiredb';
-import {NgMetro4Module} from 'ng-metro4';
+import {SAPPHIRE_DB_OPTIONS, SapphireDbModule} from 'ng-sapphiredb';
+import {SapphireDbOptions} from 'sapphiredb';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,18 +12,17 @@ import {NgMetro4Module} from 'ng-metro4';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     SapphireDbModule,
-    NgMetro4Module
+    FormsModule
   ],
   providers: [
     {
       provide: SAPPHIRE_DB_OPTIONS,
-      useValue: <SapphireDbOptions>{
-        serverBaseUrl: 'localhost:5000',
-        useSsl: false,
+      useValue: {
+        useSsl: true,
+        serverBaseUrl: 'sapphiredb-demo.azurewebsites.net',
         connectionType: 'websocket'
-      }
+      } as SapphireDbOptions
     }
   ],
   bootstrap: [AppComponent]
